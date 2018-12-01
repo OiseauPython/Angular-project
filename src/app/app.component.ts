@@ -11,7 +11,6 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	title = 'Super cool !';
 	isAuth = false;
 	appareils: any[];
 
@@ -45,12 +44,4 @@ export class AppComponent {
 			}, 2000
 		);
 	});
-
-
-
-	// appareilOne = 'bureau';
-	// appareilTwo = 'tassimo';
-	// appareilThree = 'dyson';
-	// statusMarche = 'Marche';
-	// statusArret = 'Arret';
 }
