@@ -1,17 +1,50 @@
+import { Subject } from "rxjs";
+
 export class AppareilService {
-	appareils = [{
-		name: 'Machine à laver',
-		status: 'eteint'
-	  },
-	  {
-		name: 'Tassimo',
-		status: 'allumé'
-	  },
-	  {
-		name: 'Dyson V8',
-		status: 'eteint'
-	  }
+
+	appareilsSubject = new Subject<any[]>();
+	private appareils = [
+		{
+		  id: 1,
+		  name: 'Machine à laver',
+		  status: 'éteint'
+		},
+		{
+		  id: 2,
+		  name: 'Frigo',
+		  status: 'allumé'
+		},
+		{
+		  id: 3,
+		  name: 'Ordinateur',
+		  status: 'éteint'
+		}
 	];
+
+	addAppareil(name: string, status: string) {
+		const appareilObject = {
+		  id: 0,
+		  name: '',
+		  status: ''
+		};
+		appareilObject.name = name;
+		appareilObject.status = status;
+		appareilObject.id = this.appareils[(this.appareils.length - 1)].id + 1;
+		this.appareils.push(appareilObject);
+		this.emitAppareilSubject();
+	}
+
+	emitAppareilSubject() {
+		this.appareilsSubject.next(this.appareils.slice());
+	}
+	getAppareilById(id: number) {
+		const appareil = this.appareils.find(
+		  (s) => {
+			return s.id === id;
+		  }
+		);
+		return appareil;
+	}
 
 	switchOnOne(i: number) {
 		this.appareils[i].status = 'allumé';
