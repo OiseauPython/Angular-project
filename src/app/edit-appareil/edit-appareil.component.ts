@@ -8,6 +8,7 @@ import { AppareilService } from '../services/appareil.service';
   	templateUrl: './edit-appareil.component.html',
   	styleUrls: ['./edit-appareil.component.scss']
 })
+
 export class EditAppareilComponent implements OnInit {
 
 	defaultOnOff = 'éteint';
@@ -25,4 +26,4 @@ export class EditAppareilComponent implements OnInit {
 	  this.router.navigate(['/appareils']);
 	}
   
-  }
+}

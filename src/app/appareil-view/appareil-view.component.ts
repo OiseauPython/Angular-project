@@ -1,11 +1,5 @@
-import {
-    Component,
-    OnInit,
-	Input
-} from '@angular/core';
-import {
-    AppareilService
-} from '../services/appareil.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { AppareilService } from '../services/appareil.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -54,4 +48,12 @@ export class AppareilViewComponent implements OnInit {
 			}, 2000
 		);
 	});
+
+	onSave() {
+		this.appareilService.saveAppareilsToServer();
+	}
+
+	onFetch() {
+		this.appareilService.getAppareilsFromServer();
+	}
 }
